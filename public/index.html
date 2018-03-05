@@ -1,10 +1,22 @@
+<!-- client side -->
 <!doctype html>
 <html>
 <head>
-    <title></title>
+    <title>Vue</title>
 </head>
 <body>
+<h1>Vue</h1>
+    <div id="main">
+    <!-- <h1 v-bind:class="headingClassName">{{ heading }}</h1> -->
+    <!-- images is the array -->
+    <!-- so use image.etc -->
+    <div v-for="image in images">
+        <img v-bind:src="image.image" alt="image">
+        <p>  {{image.title }} {{image.description}} </p>
+    </div>
+
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 </html>
