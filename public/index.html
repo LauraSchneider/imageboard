@@ -1,34 +1,50 @@
-<!-- client side -->
+<!-- CLIENT SIDE -->
 <!doctype html>
 <html>
+
 <head>
     <title>Vue</title>
     <link rel="stylesheet" href="stylesheet.css">
 </head>
+
 <body>
-<h1>IMAGEBOARD PEEPS</h1>
+    <h1>IMAGEBOARD PEEPS!</h1>
     <div id="main">
-        <div class="container-form">
-            <form class="form" method="post">
-                <input v-model="formStuff.title" name="title" placeholder="title" type="text">
-                <input v-model="formStuff.description" name="description" placeholder="description" type="text">
-                <input v-model="formStuff.username" name="username" placeholder="username" type="text">
-                <input type="file"v-on:change="handleChange">
-                <button v-on:click="handleSubmit">Submit</button>
-            </form>
+
+        <modal-component v-if="selectedImageID"
+            v-bind:selected-image-i-d="selectedImageID"
+        ></modal-component>
+<!-- //will show how many times it repeats depending on nr of tags -->
+
+        <form class="form" method="post">
+            <input v-model="formStuff.title" name="title" placeholder="title" type="text">
+            <input v-model="formStuff.description" name="description" placeholder="description" type="text">
+            <input v-model="formStuff.username" name="username" placeholder="username" type="text">
+            <input type="file" v-on:change="handleChange">
+            <button v-on:click="handleSubmit">Submit</button>
+        </form>
+
+        <!-- <!<h1 v-bind:class="headingClassName">{{ heading }}</h1> -->
+        <!-- images is the array -->
+        <!-- so use image.etc -->
+        <div class="image-container">
+            <div v-for="image in images">
+                <img v-bind:src="image.image" alt="image"
+                v-on:click="showImage(image.id)">
+                <p> {{image.title }} {{image.description}} {{image.id}} </p>
+            </div>
         </div>
-    <!-- <h1 v-bind:class="headingClassName">{{ heading }}</h1> -->
-    <!-- images is the array -->
-    <!-- so use image.etc -->
-    <div class="image-container">
-    <div v-for="image in images">
-        <img v-bind:src="image.image" alt="image">
-        <p>  {{image.title }} {{image.description}} </p>
     </div>
-</div>
-</div>
+
+    <script id="modal-template" type="x-template">
+    <div id="modal">
+        <p>{{username}}, {{title}}, {{description}}</p>
+    </div>
+    </script>
+
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
     <script src="/js/script.js"></script>
 </body>
+
 </html>

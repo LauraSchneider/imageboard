@@ -43,13 +43,19 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
 });
 
 app.get('/images', (req, res) => {
-    console.log("CHECKING IMAGES ROUTE");
+    // console.log("CHECKING IMAGES ROUTE");
     db.getImages().then(images => {
         // results refering to images from db
-
-        console.log("IMAGES", images);
+        // console.log("IMAGES", images);
         res.json({images: images}); //Sending response back to client
     }); //back to client --> whatever we put in res.json gets captured in axios of the 'then' of our GET request
 });
 
+app.get('/modal/:selectedImageID', (req,res) => {
+    // console.log("INSIDE SERVER", req.body, "PARAMETERS", req.params);
+    db.getImageInfo(req.params.selectedImageID).then(results => {
+        res.json({results});
+    });
+    //req.params is for urls with : word. & req.body is for user input
+});
 app.listen(8080, () => console.log("glistening"));

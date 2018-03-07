@@ -1,24 +1,19 @@
 const knox = require('knox');
 const fs = require('fs');
 
-
 let secrets;
 if (process.env.NODE_ENV == 'production') {
-    secrets = process.env; // in prod the secrets are environment variables
+    secrets = process.env;
 } else {
     secrets = require('./secrets'); // secrets.json is in .gitignore
     console.log("SECRETS", secrets);
 }
 
-const client = knox.createClient({
-    key: secrets.accesskeyidaws,
-    secret: secrets.secretaccesskeyaws,
-    bucket: 'laura-imageboard'
-});
+const client = knox.createClient({key: secrets.accesskeyidaws, secret: secrets.secretaccesskeyaws, bucket: 'laura-imageboard'});
 
 //middleware
 function upload(req, res, next) {
-    if(!req.file) {
+    if (!req.file) {
         console.log("FS3 check");
         res.sendStatus(500);
         return; //returns this if multer part didn't work
