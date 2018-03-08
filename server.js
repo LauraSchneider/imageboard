@@ -12,6 +12,8 @@ app.use(express.static('public'));
 
 app.use(bodyParser.urlencoded({extended: false}));
 
+app.use(bodyParser.json()); //boilerplate for sending info over to server as an object so we need this line, so req.body won't be empty anymore.
+
 var diskStorage = multer.diskStorage({
     destination: function(req, file, callback) {
         callback(null, __dirname + '/uploads');
@@ -34,8 +36,7 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
 
     if (req.file) {
         db.addImagesToBrowser(req.body.title, req.body.description, req.body.username, req.file.filename).then(results => {
-            res.json({images: results[0]
-            });
+            res.json({images: results[0]});
         });
     } else {
         res.json({success: false});
@@ -51,11 +52,18 @@ app.get('/images', (req, res) => {
     }); //back to client --> whatever we put in res.json gets captured in axios of the 'then' of our GET request
 });
 
-app.get('/modal/:selectedImageID', (req,res) => {
+app.get('/modal/:selectedImageID', (req, res) => {
     // console.log("INSIDE SERVER", req.body, "PARAMETERS", req.params);
     db.getImageInfo(req.params.selectedImageID).then(results => {
         res.json({results});
     });
     //req.params is for urls with : word. & req.body is for user input
+});
+
+app.post('/comments', (req, res) => {
+    // console.log("RESULTS", req.body);
+    db.postComment(req.body.comment, req.body.username, req.body.id).then(results => {
+        res.json({results});
+    });
 });
 app.listen(8080, () => console.log("glistening"));

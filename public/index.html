@@ -27,19 +27,36 @@
         <!-- <!<h1 v-bind:class="headingClassName">{{ heading }}</h1> -->
         <!-- images is the array -->
         <!-- so use image.etc -->
-        <div class="image-container">
-            <div v-for="image in images">
+        <div class="container">
+            <div class="content-container" v-for="image in images">
+
+                <div class="image-container">
                 <img v-bind:src="image.image" alt="image"
                 v-on:click="showImage(image.id)">
-                <p> {{image.title }} {{image.description}} {{image.id}} </p>
+            </div>
+            <div class="write-container">
+                <p> {{image.title }}   </p>
+                <!-- {{image.id}} {{image.description}} -->
+            </div>
             </div>
         </div>
     </div>
 
     <script id="modal-template" type="x-template">
+
     <div id="modal">
-        <p>{{username}}, {{title}}, {{description}}</p>
+        <div id="large-image">
+        <img v-bind:src="image"/>
+        </div>
+        <p>{{username}}, {{title}}, {{description}} </p>
+        <form>
+            <input v-model="comment.comment" type="text"/>
+            <input v-model="comment.username" type="text"/>
+            <button v-on:click="postComment">Submit</button>
+        </form>
+        <p v-for="item in comment">{{item.username}}: {{item.comment}}</p>
     </div>
+
     </script>
 
     <script src="/js/vue.js"></script>

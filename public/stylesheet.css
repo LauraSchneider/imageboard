@@ -1,49 +1,71 @@
-* {background-color: rgb(0, 255, 224)}
-
- .image-container {
-     /* border: 2px red solid; */
-     display: flex;
-     flex-direction: row-reverse;
-     justify-content:space-around;
-     flex-wrap: wrap;
-
- }
-
-.form {
-    /* border: 2px blue solid; */
-    /* width: 100%; */
+* {
+    background-color: rgb(0, 255, 224)
 }
 
+.container {
+    /* border: 2px red solid; */
+    display: flex;
+    flex-wrap: wrap-reverse;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.content-container {
+    width: 300px;
+    height: 300px;
+    margin-top: 20px;
+    /* border: 5px green solid; */
+}
+
+.image-container {
+    /* border: 5px blue solid; */
+    display: flex;
+    height: 250px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 5px #43a3e8 solid;
+}
+
+#large-image {
+    height: 300px;
+    width: 300px;
+}
 input {
     height: 30px;
     width: 180px;
     font-family: fantasy;
+    font-size: 15px;
     /* border: 1px green solid; */
 }
 
 button {
-
+    height: 40px;
+    width: 100px;
 }
+
 img {
-    height: 300px;
-    width: 300px;
-    border: 1px green solid;
-    margin-top: 20px;
+    min-height: 100%;
+    width: 100%;
+    /* margin-top: 20px; */
 }
 
 p {
-    font-family: sans-serif;
+    font-family: fantasy;
+    height: 10px;
 }
+
 h1 {
-    -webkit-font-smoothing:antialiased;
+    -webkit-font-smoothing: antialiased;
     font-family: cursive;
     font-size: 25px;
-
-
 }
+
 #modal {
     border: 3px green solid;
-    background-color: rgb(198, 67, 249);
-    height: 100px;
-
-}
+    background-color: purple;
+    height: 100%;
+    width: 80%;
+    position: absolute;
+    left: 10%;
+    top: 10%;

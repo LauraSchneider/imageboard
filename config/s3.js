@@ -6,7 +6,7 @@ if (process.env.NODE_ENV == 'production') {
     secrets = process.env;
 } else {
     secrets = require('./secrets'); // secrets.json is in .gitignore
-    console.log("SECRETS", secrets);
+    // console.log("SECRETS", secrets);
 }
 
 const client = knox.createClient({key: secrets.accesskeyidaws, secret: secrets.secretaccesskeyaws, bucket: 'laura-imageboard'});

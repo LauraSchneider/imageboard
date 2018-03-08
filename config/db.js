@@ -56,8 +56,22 @@ function getImageInfo(selectedImageID) {
         });
     });
 }
+
+function postComment(comment, username, selectedImageID) {
+    return new Promise((resolve, reject) => {
+        const q = `INSERT INTO comments (comment, username,  image_id) VALUES ($1, $2, $3) RETURNING *`;
+        const params = [comment, username, selectedImageID];
+        db.query(q, params).then(results => {
+            console.log("RESULTS ROW",results);
+            resolve(results.rows[0]);//always results.addImagesToBrowser
+        }).catch(err => {
+            reject(err);
+        });
+    });
+}
 module.exports = {
     getImages,
     addImagesToBrowser,
-    getImageInfo
+    getImageInfo,
+    postComment
 };
