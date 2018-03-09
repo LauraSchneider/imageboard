@@ -36,9 +36,11 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
 
     if (req.file) {
         db.addImagesToBrowser(req.body.title, req.body.description, req.body.username, req.file.filename).then(results => {
+            // console.log("RESULTS",results);
             res.json({images: results[0]});
         });
     } else {
+
         res.json({success: false});
     }
 });
@@ -53,10 +55,13 @@ app.get('/images', (req, res) => {
 });
 
 app.get('/modal/:selectedImageID', (req, res) => {
-    // console.log("INSIDE SERVER", req.body, "PARAMETERS", req.params);
     db.getImageInfo(req.params.selectedImageID).then(results => {
-        res.json({results});
+        db.getComment(req.params.selectedImageID).then(data => {
+            res.json({results, data});
+
+        });
     });
+
     //req.params is for urls with : word. & req.body is for user input
 });
 
@@ -65,5 +70,13 @@ app.post('/comments', (req, res) => {
     db.postComment(req.body.comment, req.body.username, req.body.id).then(results => {
         res.json({results});
     });
+});
+
+app.get('/scroll/:lastImageID', (req, res) => {
+    db.getMorePics(req.params.lastImageID).then(results => {
+        console.log("RESULTTS", results);
+        res.json({results});
+    });
+
 });
 app.listen(8080, () => console.log("glistening"));

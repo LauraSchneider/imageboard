@@ -5,15 +5,17 @@
 .container {
     /* border: 2px red solid; */
     display: flex;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     padding: 20px;
-    justify-content: space-between;
+    justify-content: flex-start;
+    margin-left: 80px;
 }
 
 .content-container {
     width: 300px;
     height: 300px;
     margin-top: 20px;
+
     /* border: 5px green solid; */
 }
 
@@ -25,11 +27,13 @@
     align-items: center;
     overflow: hidden;
     border: 5px #43a3e8 solid;
+    margin-right: 20px;
 }
 
 #large-image {
     height: 300px;
     width: 300px;
+
 }
 input {
     height: 30px;
@@ -45,8 +49,10 @@ button {
 }
 
 img {
+
     min-height: 100%;
     width: 100%;
+
     /* margin-top: 20px; */
 }
 
@@ -69,3 +75,5 @@ h1 {
     position: absolute;
     left: 10%;
     top: 10%;
+    display: flex;
+    justify-content: flex-end;

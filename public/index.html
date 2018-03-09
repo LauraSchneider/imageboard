@@ -11,7 +11,7 @@
     <h1>IMAGEBOARD PEEPS!</h1>
     <div id="main">
 
-        <modal-component v-if="selectedImageID"
+        <modal-component v-on:close="modalShut" v-if="selectedImageID"
             v-bind:selected-image-i-d="selectedImageID"
         ></modal-component>
 <!-- //will show how many times it repeats depending on nr of tags -->
@@ -40,6 +40,7 @@
             </div>
             </div>
         </div>
+                <button v-on:click="morePics" type="" id="more-button" >More</button>
     </div>
 
     <script id="modal-template" type="x-template">
@@ -48,17 +49,18 @@
         <div id="large-image">
         <img v-bind:src="image"/>
         </div>
+        <p id="x" v-on:click="closeModal">x</p>
         <p>{{username}}, {{title}}, {{description}} </p>
         <form>
-            <input v-model="comment.comment" type="text"/>
-            <input v-model="comment.username" type="text"/>
+            <input class="modal-text" v-model="comment.comment" type="text" placeholder="Comment"/>
+            <input class="modal-text" v-model="comment.username" type="text" placeholder="Username"/>
             <button v-on:click="postComment">Submit</button>
         </form>
         <p v-for="item in comment">{{item.username}}: {{item.comment}}</p>
+
     </div>
 
     </script>
-
     <script src="/js/vue.js"></script>
     <script src="/js/axios.min.js"></script>
     <script src="/js/script.js"></script>
