@@ -1,5 +1,5 @@
-* {
-    background-color: rgb(0, 255, 224)
+body {
+    background-color: rgb(248, 207, 114);
 }
 
 .container {
@@ -15,7 +15,6 @@
     width: 300px;
     height: 300px;
     margin-top: 20px;
-
     /* border: 5px green solid; */
 }
 
@@ -26,54 +25,207 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    border: 5px #43a3e8 solid;
+    border: 10px #dff2ff solid;
     margin-right: 20px;
 }
 
-#large-image {
-    height: 300px;
-    width: 300px;
 
-}
 input {
-    height: 30px;
-    width: 180px;
-    font-family: fantasy;
-    font-size: 15px;
-    /* border: 1px green solid; */
+    height: 35px;
+    width: 220px;
+    font-family: 'Kanit', sans-serif;
+    font-size: 18px;
+    margin-left: 10px;
+    border: 3px #cacaca solid;
+    background-color: #fff7eb;
+    padding-left: 10px;
+}
+
+#chosen-field {
+    background-color: rgb(248, 207, 114);
+    padding-top: 2px;
+    border: 2px rgb(248, 207, 114);
+    /*     height: 60px; */
 }
 
 button {
-    height: 40px;
-    width: 100px;
+    height: 45px;
+    width: 120px;
+    font-family: 'Kanit', sans-serif;
+font-family: 'Righteous', cursive;
+    font-weight: bold;
+    font-size: 20px;
+/*     background-color: #cfffc3; */
+    border-radius: 18px;
+    margin-left: 20px;
+/*     border: 3px #f2fff5 solid; */
+    padding: 5px;
+        border: 3px #653be5 solid;
+    background-color: #70b3f9;
+
+}
+
+button:hover {
+    background-color: #cfffc3;
+    border: 3px #f2fff5 solid;
 }
 
 img {
-
     min-height: 100%;
     width: 100%;
-
     /* margin-top: 20px; */
 }
 
 p {
     font-family: fantasy;
+    margin-top: 10px;
     height: 10px;
+    font-size: 18px;
 }
 
 h1 {
-    -webkit-font-smoothing: antialiased;
-    font-family: cursive;
-    font-size: 25px;
+    font-family: 'Rammetto One', cursive;
+    font-size: 30px;
+    text-align: center;
+    padding-bottom: 15px;
 }
 
 #modal {
     border: 3px green solid;
-    background-color: purple;
-    height: 100%;
-    width: 80%;
+    background-color: #d2f0ff;
+/*         background-color: #ceffd4; */
+    height: 150%;
+    width: 90%;
     position: absolute;
-    left: 10%;
+    left: 5%;
     top: 10%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+}
+
+
+#large-image {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    /* border: 3px black solid; */
+    margin-left: 35%;
+    margin-top: 2%;
+}
+
+.fields {
+/*     border: 3px red solid; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contents {
+/*     border: 2px blue solid; */
+    flex:1;
+
+}
+.exit-container {
+/*     border: 3px red solid; */
+    order: 1;
+}
+
+#x {
+    font-family: arial;
+    font-weight: bold;
+    color: #588687;
+    font-size: 40px;
+    border: 5px #588687 solid;
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    text-align: center;
+    padding-bottom: 7px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#x:hover{
+    animation: spin 0.7s linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotateX(180deg);
+    }
+    to {
+        transform: rotateX(359deg);
+    }
+}
+
+
+#title {
+    font-size: 18px;
+    flex: 1;
+/*          border: 2px red solid; */
+
+}
+
+.text {
+   font-family: 'Kanit', sans-serif;
+     flex: 1;
+
+}
+#description {
+
+    flex: 1;
+      font-size: 18px;
+/*            border: 2px green solid; */
+}
+
+#username {
+    flex: 1;
+    font-size: 18px;
+
+/*     border: 2px blue solid; */
+}
+
+#created {
+    font-size: 18px;
+    flex: 1;
+/*     border: 2px green solid; */
+
+}
+
+#share {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+/*     border: 3px green solid; */
+    height: 30px;
+        margin-left: 20px;
+}
+
+.modal-text {
+    margin-left: 20px;
+}
+.more-container {
+    display: flex;
+    justify-content: center;
+         /* border: 2px red solid; */
+}
+#answer {
+    padding: 10px;
+    margin-left: 20px;
+    font-family: 'Kanit', sans-serif;
+}
+
+#more-button {
+    height: 45px;
+    width: 200px;
+    border-radius: 10px;
+    border: 3px #653be5 solid;
+    background-color: #70b3f9;
+    font-size: 25px;
+}
+
+#more-button:hover {
+    background-color: #cfffc3;
+    border: 3px #f2fff5 solid;
+}

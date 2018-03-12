@@ -6,7 +6,7 @@ const {s3Url} = require("./config.json");
 
 function getImages() {
     return new Promise((resolve, reject) => {
-        const q = 'SELECT * FROM images ORDER BY created_at DESC LIMIT 16';
+        const q = 'SELECT * FROM images ORDER BY created_at DESC LIMIT 12';
         db.query(q).then(results => {
             // console.log("results from our query", results.rows);
             let images = results.rows; //loop thru results an array of objects (item is the object)
@@ -84,7 +84,7 @@ function getComment(selectedImageID) {
 
 function getMorePics(lastImageID) {
     return new Promise((resolve, reject) => {
-        const q = `SELECT * FROM images WHERE id < $1 ORDER BY created_at DESC LIMIT 16`; //insert value of last image id.
+        const q = `SELECT * FROM images WHERE id < $1 ORDER BY created_at DESC LIMIT 12`; //insert value of last image id.
         const params = [lastImageID];
         db.query(q, params).then(results => {
 
@@ -99,6 +99,7 @@ function getMorePics(lastImageID) {
         });
     });
 }
+
 module.exports = {
     getImages,
     addImagesToBrowser,

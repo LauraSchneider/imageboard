@@ -61,12 +61,10 @@ app.get('/modal/:selectedImageID', (req, res) => {
 
         });
     });
-
     //req.params is for urls with : word. & req.body is for user input
 });
 
 app.post('/comments', (req, res) => {
-    // console.log("RESULTS", req.body);
     db.postComment(req.body.comment, req.body.username, req.body.id).then(results => {
         res.json({results});
     });
@@ -74,7 +72,6 @@ app.post('/comments', (req, res) => {
 
 app.get('/scroll/:lastImageID', (req, res) => {
     db.getMorePics(req.params.lastImageID).then(results => {
-        console.log("RESULTTS", results);
         res.json({results});
     });
 

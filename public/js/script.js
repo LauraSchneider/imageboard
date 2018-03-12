@@ -41,13 +41,14 @@ Vue.component('modal-component', {
         axios.get("/modal/" + this.selectedImageID).then(function(resp) {
             // console.log("JuST LOgGGING in browser script", results);
 
-            const {id, image, username, title, description} = resp.data.results[0];
+            const {id, image, username, title, description, created_at} = resp.data.results[0];
             self.id = id;
             self.image = image;
             self.username = username;
             self.title = title;
             self.description = description;
             self.comment = resp.data.data;
+            self.created_at = created_at;
 
         });
         //image id is what the user clicked on

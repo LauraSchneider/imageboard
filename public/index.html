@@ -5,23 +5,25 @@
 <head>
     <title>Vue</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Rammetto+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kanit:400,700|Righteous" rel="stylesheet">
+
 </head>
 
 <body>
-    <h1>IMAGEBOARD PEEPS!</h1>
+    <h1>IMAGEBOARD</h1>
     <div id="main">
 
-        <modal-component v-on:close="modalShut" v-if="selectedImageID"
-            v-bind:selected-image-i-d="selectedImageID"
-        ></modal-component>
-<!-- //will show how many times it repeats depending on nr of tags -->
+        <modal-component v-on:close="modalShut" v-if="selectedImageID" v-bind:selected-image-i-d="selectedImageID"></modal-component>
+        <!-- //will show how many times it repeats depending on nr of tags -->
 
         <form class="form" method="post">
-            <input v-model="formStuff.title" name="title" placeholder="title" type="text">
-            <input v-model="formStuff.description" name="description" placeholder="description" type="text">
-            <input v-model="formStuff.username" name="username" placeholder="username" type="text">
-            <input type="file" v-on:change="handleChange">
-            <button v-on:click="handleSubmit">Submit</button>
+            <input v-model="formStuff.title" name="title" placeholder="Title" type="text">
+            <input v-model="formStuff.description" name="description" placeholder="Description" type="text">
+            <input v-model="formStuff.username" name="username" placeholder="Username" type="text">
+            <input id="chosen-field" type="file" v-on:change="handleChange">
+            <button class="button" v-on:click="handleSubmit">SUBMIT</button>
         </form>
 
         <!-- <!<h1 v-bind:class="headingClassName">{{ heading }}</h1> -->
@@ -31,34 +33,46 @@
             <div class="content-container" v-for="image in images">
 
                 <div class="image-container">
-                <img v-bind:src="image.image" alt="image"
-                v-on:click="showImage(image.id)">
-            </div>
-            <div class="write-container">
-                <p> {{image.title }}   </p>
-                <!-- {{image.id}} {{image.description}} -->
-            </div>
+                    <img v-bind:src="image.image" alt="image" v-on:click="showImage(image.id)">
+                </div>
+                <div class="write-container">
+                    <p> {{image.title }} </p>
+                    <!-- {{image.id}} {{image.description}} -->
+                </div>
             </div>
         </div>
-                <button v-on:click="morePics" type="" id="more-button" >More</button>
+        <div class="more-container">
+            <button id="more-button" v-on:click="morePics" type="">More</button>
+        </div>
     </div>
 
     <script id="modal-template" type="x-template">
 
-    <div id="modal">
-        <div id="large-image">
-        <img v-bind:src="image"/>
-        </div>
+        <div id="modal">
+        <div class="exit-container">
         <p id="x" v-on:click="closeModal">x</p>
-        <p>{{username}}, {{title}}, {{description}} </p>
-        <form>
-            <input class="modal-text" v-model="comment.comment" type="text" placeholder="Comment"/>
-            <input class="modal-text" v-model="comment.username" type="text" placeholder="Username"/>
-            <button v-on:click="postComment">Submit</button>
-        </form>
-        <p v-for="item in comment">{{item.username}}: {{item.comment}}</p>
-
-    </div>
+        </div>
+            <div class="contents">
+                <div id="large-image">
+                    <img v-bind:src="image"/>
+                </div>
+                <div class="fields">
+                <p id="title" class="text"><strong>Title:</strong> {{title}}</p>
+                <p id="description" class="text"><strong>Description:</strong> {{description}} </p>
+                <p id="username" class="text"><strong>Uploaded by:</strong> {{username}}</p>
+                <p id="created" class="text"><strong>Created at:</strong> {{created_at}}</p>
+                </div>
+                <div id="add-comment">
+                <p id="share" class="text">Share your thoughts below!</p>
+                </div>
+                <form>
+                    <input class="modal-text" v-model="comment.comment" type="text" placeholder="Comment" />
+                    <input class="modal-text" v-model="comment.username" type="text" placeholder="Username" />
+                    <button v-on:click="postComment">SUBMIT</button>
+                </form>
+                <p id="answer" v-for="item in comment">{{item.username}}: {{item.comment}}</p>
+            </div>
+        </div>
 
     </script>
     <script src="/js/vue.js"></script>
