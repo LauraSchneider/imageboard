@@ -4,11 +4,9 @@
 
 **Technologies used:** Vue.js, Node.js, Express.js, PostgreSQL, HTML, CSS, Javascript, AWS S3 bucket
 
-
-
 I built a single page application project in one week during my time in the Full Stack Web Development program. I created an imageboard using Vue.js for the first time. 
 
-On the main page, a user is able to upload a new image and be able to see previous images posted by other users by clicking on the 'More' button. 
+On the main page, a user is able to upload a new image and is be able to see previous images posted by other users by clicking on the 'More' button. 
 
 <img src="imageboard_uploadpic_demo.gif">
 
